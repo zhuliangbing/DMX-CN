@@ -1,0 +1,29 @@
+{
+  "topic_types": [
+    {
+      "value":       "Tag名称",
+      "uri":         "dmx.tags.tag_name",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Tag",
+      "uri":         "dmx.tags.tag",
+      "dataTypeUri": "dmx.core.identity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.tags.tag_name",
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      true
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf02b"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+    "topic_types": [
+        {
+            "value":       "标题",
+            "uri":         "dmx.notes.title",
+            "dataTypeUri": "dmx.core.text"
+        },
+        {
+            "value":       "文本",
+            "uri":         "dmx.notes.text",
+            "dataTypeUri": "dmx.core.html"
+        },
+        {
+            "value":       "注释",
+            "uri":         "dmx.notes.note",
+            "dataTypeUri": "dmx.core.identity",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.notes.title",
+                    "childCardinalityUri": "dmx.core.one"
+                },
+                {
+                    "childTypeUri":        "dmx.notes.text",
+                    "childCardinalityUri": "dmx.core.one"
+                }
+            ],
+            "viewConfigTopics": [
+                {
+                    "typeUri": "dmx.webclient.view_config",
+                    "children": {
+                        "dmx.webclient.icon": "\uf24a",
+                        "dmx.webclient.add_to_create_menu": true
+                    }
+                }
+            ]
+        }
+    ]
+}

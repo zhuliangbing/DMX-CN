@@ -1,0 +1,49 @@
+{
+    "topic_types": [
+        {
+            "value":       "经度",         // TODO: make it a prop?
+            "uri":         "dmx.geomaps.longitude",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "纬度",          // TODO: make it a prop?
+            "uri":         "dmx.geomaps.latitude",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "地理图谱坐标",
+            "uri":         "dmx.geomaps.geo_coordinate",
+            "dataTypeUri": "dmx.core.value",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.geomaps.longitude",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                },
+                {
+                    "childTypeUri":        "dmx.geomaps.latitude",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                }
+            ]
+        },
+        {
+            "value":       "地理图谱坐标分面",
+            "uri":         "dmx.geomaps.geo_coordinate_facet",
+            "dataTypeUri": "dmx.core.identity",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.geomaps.geo_coordinate",
+                    "childCardinalityUri": "dmx.core.one"
+                }
+            ]
+        }
+    ],
+    "assoc_types": [
+        {
+            "value":       "地理图谱情境",
+            "uri":         "dmx.geomaps.geomap_context",
+            "dataTypeUri": "dmx.core.text"
+        }
+    ]
+}
