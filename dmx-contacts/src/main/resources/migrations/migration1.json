@@ -1,0 +1,318 @@
+// Part of DMX 5.0-beta-3
+// Runs ALWAYS
+
+[
+  {
+    "topic_types": [
+      {
+        "value":       "电话标签",
+        "uri":         "dmx.contacts.phone_label",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "地址标签",
+        "uri":         "dmx.contacts.address_label",
+        "dataTypeUri": "dmx.core.text"
+      }
+    ],
+    "assoc_types": [
+      {
+        "value":       "出生日期",
+        "uri":         "dmx.contacts.date_of_birth",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "电话输入",
+        "uri":         "dmx.contacts.phone_entry",
+        "dataTypeUri": "dmx.core.composite",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.phone_label",
+            "childCardinalityUri": "dmx.core.one",
+            "viewConfigTopics": [
+              {
+                "typeUri": "dmx.webclient.view_config",
+                "children": {
+                  "dmx.webclient.widget": "ref_uri:dmx.webclient.select",
+                  "dmx.webclient.clearable": true,
+                  "dmx.webclient.customizable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "value":       "地址输入",
+        "uri":         "dmx.contacts.address_entry",
+        "dataTypeUri": "dmx.core.composite",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.address_label",
+            "childCardinalityUri": "dmx.core.one",
+            "viewConfigTopics": [
+              {
+                "typeUri": "dmx.webclient.view_config",
+                "children": {
+                  "dmx.webclient.widget": "ref_uri:dmx.webclient.select",
+                  "dmx.webclient.clearable": true,
+                  "dmx.webclient.customizable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "topic_types": [
+      // Person Name
+      {
+        "value":       "名",
+        "uri":         "dmx.contacts.first_name",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "姓",
+        "uri":         "dmx.contacts.last_name",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "人名",
+        "uri":         "dmx.contacts.person_name",
+        "dataTypeUri": "dmx.core.value",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.first_name",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.last_name",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          }
+        ]
+      },
+      // Organization Name
+      {
+        "value":       "组织机构名称",
+        "uri":         "dmx.contacts.organization_name",
+        "dataTypeUri": "dmx.core.text"
+      },
+      // Phone
+      {
+        "value":       "电话",
+        "uri":         "dmx.contacts.phone_number",
+        "dataTypeUri": "dmx.core.text"
+      },
+      // Email Address
+      {
+        "value":       "Email地址",
+        "uri":         "dmx.contacts.email_address",
+        "dataTypeUri": "dmx.core.text"
+      },
+      // Address
+      {
+        "value":       "街道",
+        "uri":         "dmx.contacts.street",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "邮编",
+        "uri":         "dmx.contacts.postal_code",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "城市",
+        "uri":         "dmx.contacts.city",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "地区",
+        "uri":         "dmx.contacts.region",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "国家",
+        "uri":         "dmx.contacts.country",
+        "dataTypeUri": "dmx.core.text"
+      },
+      {
+        "value":       "地址",
+        "uri":         "dmx.contacts.address",
+        "dataTypeUri": "dmx.core.value",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.street",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.postal_code",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.city",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.region",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.country",
+            "childCardinalityUri": "dmx.core.one",
+            "includeInLabel":      true
+          }
+        ]
+      },
+      // Person
+      {
+        "value":       "人物描述",
+        "uri":         "dmx.contacts.person_description",
+        "dataTypeUri": "dmx.core.html"
+      },
+      {
+        "value":       "人物",
+        "uri":         "dmx.contacts.person",
+        "dataTypeUri": "dmx.core.identity",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.person_name",
+            "childCardinalityUri": "dmx.core.one",
+            "isIdentityAttr":      true
+          },
+          {
+            "childTypeUri":        "dmx.datetime.date",
+            "childCardinalityUri": "dmx.core.one",
+            "customAssocTypeUri":  "dmx.contacts.date_of_birth"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.phone_number",
+            "childCardinalityUri": "dmx.core.many",
+            "customAssocTypeUri":  "dmx.contacts.phone_entry"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.email_address",
+            "childCardinalityUri": "dmx.core.many"
+          },
+          {
+            "childTypeUri":        "dmx.base.url",
+            "childCardinalityUri": "dmx.core.many"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.address",
+            "childCardinalityUri": "dmx.core.many",
+            "customAssocTypeUri":  "dmx.contacts.address_entry"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.person_description",
+            "childCardinalityUri": "dmx.core.one"
+          }
+        ],
+        "viewConfigTopics": [
+          {
+            "typeUri": "dmx.webclient.view_config",
+            "children": {
+              "dmx.webclient.icon": "\uf007",
+              "dmx.webclient.add_to_create_menu": true
+            }
+          }
+        ]
+      },
+      // Organization
+      {
+        "value":       "组织机构描述",
+        "uri":         "dmx.contacts.organization_description",
+        "dataTypeUri": "dmx.core.html"
+      },
+      {
+        "value":       "组织机构",
+        "uri":         "dmx.contacts.organization",
+        "dataTypeUri": "dmx.core.identity",
+        "compDefs": [
+          {
+            "childTypeUri":        "dmx.contacts.organization_name",
+            "childCardinalityUri": "dmx.core.one",
+            "isIdentityAttr":      true
+          },
+          {
+            "childTypeUri":        "dmx.contacts.phone_number",
+            "childCardinalityUri": "dmx.core.many",
+            "customAssocTypeUri":  "dmx.contacts.phone_entry"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.email_address",
+            "childCardinalityUri": "dmx.core.many"
+          },
+          {
+            "childTypeUri":        "dmx.base.url",
+            "childCardinalityUri": "dmx.core.many"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.address",
+            "childCardinalityUri": "dmx.core.many",
+            "customAssocTypeUri":  "dmx.contacts.address_entry"
+          },
+          {
+            "childTypeUri":        "dmx.contacts.organization_description",
+            "childCardinalityUri": "dmx.core.one"
+          }
+        ],
+        "viewConfigTopics": [
+          {
+            "typeUri": "dmx.webclient.view_config",
+            "children": {
+              "dmx.webclient.icon": "\uf0e8",
+              "dmx.webclient.add_to_create_menu": true
+            }
+          }
+        ]
+      }
+    ],
+    "topics": [
+      // Phone Labels
+      {
+        "value":   "工作电话",
+        "uri":     "dmx.contacts.work_phone",
+        "typeUri": "dmx.contacts.phone_label"
+      },
+      {
+        "value":   "家庭电话",
+        "uri":     "dmx.contacts.home_phone",
+        "typeUri": "dmx.contacts.phone_label"
+      },
+      {
+        "value":   "手机号码",
+        "uri":     "dmx.contacts.mobile",
+        "typeUri": "dmx.contacts.phone_label"
+      },
+      {
+        "value":   "工作传真",
+        "uri":     "dmx.contacts.work_fax",
+        "typeUri": "dmx.contacts.phone_label"
+      },
+      {
+        "value":   "家庭传真",
+        "uri":     "dmx.contacts.home_fax",
+        "typeUri": "dmx.contacts.phone_label"
+      },
+      // Address Labels
+      {
+        "value":   "工作地址",
+        "uri":     "dmx.contacts.work_address",
+        "typeUri": "dmx.contacts.address_label"
+      },
+      {
+        "value":   "家庭地址",
+        "uri":     "dmx.contacts.home_address",
+        "typeUri": "dmx.contacts.address_label"
+      }
+    ]
+  }
+]

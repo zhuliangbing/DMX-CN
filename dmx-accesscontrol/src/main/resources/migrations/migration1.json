@@ -1,0 +1,63 @@
+// Part of DMX 5.0-beta-3
+// Runs ALWAYS
+
+{
+  "topic_types": [
+    // 用户账号
+    {
+      "value":       "用户名",
+      "uri":         "dmx.accesscontrol.username",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "密码",
+      "uri":         "dmx.accesscontrol.password",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "用户账号",
+      "uri":         "dmx.accesscontrol.user_account",
+      "dataTypeUri": "dmx.core.identity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.accesscontrol.username",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.accesscontrol.password",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf21b"
+          }
+        }
+      ]
+    },
+    // Config
+    {
+      "value": "已启用登录",
+      "uri": "dmx.accesscontrol.login_enabled",
+      "dataTypeUri": "dmx.core.boolean"
+    }
+  ],
+  "assoc_types": [
+    {
+      "value":       "成员",
+      "uri":         "dmx.accesscontrol.membership",
+      "dataTypeUri": "dmx.core.text",
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.color": "hsl(40, 70%, 53%)",
+            "dmx.webclient.color#dmx.webclient.background_color": "hsl(40, 80%, 96%)"
+          }
+        }
+      ]
+    }
+  ]
+}

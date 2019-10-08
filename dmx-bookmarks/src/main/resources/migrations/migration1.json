@@ -1,0 +1,37 @@
+// Part of DMX 5.0-beta-3
+// Runs ALWAYS
+
+{
+  "topic_types": [
+    {
+      "value":       "书签描述",
+      "uri":         "dmx.bookmarks.description",
+      "dataTypeUri": "dmx.core.html"
+    },
+    {
+      "value":       "书签",
+      "uri":         "dmx.bookmarks.bookmark",
+      "dataTypeUri": "dmx.core.identity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.base.url",
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      true
+        },
+        {
+          "childTypeUri":        "dmx.bookmarks.description",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf08e",
+            "dmx.webclient.add_to_create_menu": true
+          }
+        }
+      ]
+    }
+  ]
+}

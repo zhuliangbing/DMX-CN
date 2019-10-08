@@ -1,0 +1,10 @@
+{
+    "topics": [
+        ### Role Types ###
+        {
+            "value":   "分面",
+            "uri":     "dmx.facets.facet",
+            "typeUri": "dmx.core.role_type"
+        }
+    ]
+}

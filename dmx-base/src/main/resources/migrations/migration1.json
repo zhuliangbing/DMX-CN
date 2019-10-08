@@ -1,0 +1,14 @@
+{
+  "topic_types": [
+    {
+      "value":       "URL",
+      "uri":         "dmx.base.url",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "描述",
+      "uri":         "dmx.base.description",
+      "dataTypeUri": "dmx.core.html"
+    }
+  ]
+}

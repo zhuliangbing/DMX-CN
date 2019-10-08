@@ -1,0 +1,96 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+
+    <id>distribution</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <dependencySets>
+        <!-- copy Felix main jar to /bin -->
+        <dependencySet>
+            <includes>
+                <include>org.apache.felix:org.apache.felix.main</include>
+            </includes>
+            <fileMode>0444</fileMode>
+            <outputDirectory>bin</outputDirectory>
+            <outputFileNameMapping>felix.jar</outputFileNameMapping>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <!-- copy bundles to /bundle -->
+        <dependencySet>
+            <includes>
+                <include>systems.dmx:*:jar</include>
+                <include>com.sun.jersey:*</include>
+                <include>commons-fileupload:*</include>
+                <include>org.apache.felix:org.apache.felix.configadmin</include>
+                <include>org.apache.felix:org.apache.felix.eventadmin</include>
+                <include>org.apache.felix:org.apache.felix.fileinstall</include>
+                <include>org.apache.felix:org.apache.felix.http.jetty</include>
+                <include>org.apache.felix:org.apache.felix.http.api</include>
+                <include>org.apache.felix:org.apache.felix.http.servlet-api</include>
+                <include>org.apache.felix:org.apache.felix.gogo.*</include> <!-- FIXME: CAN'T RUN IN BACKGROUND -->
+                <include>org.apache.servicemix.bundles:*</include>
+                <!--include>org.ops4j.pax.web:*</include-->
+                <include>org.slf4j:*</include>
+                <include>org.codehaus.jettison:*</include>
+            </includes>
+            <fileMode>0444</fileMode>
+            <outputDirectory>bundle</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+
+    <files>
+        <!-- copy README to / -->
+        <file>
+            <source>../../README.md</source>
+            <destName>README.txt</destName>
+        </file>
+        <!-- copy config files to /conf -->
+        <file>
+            <source>conf/config.properties</source>
+            <outputDirectory>conf</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>conf/logging.properties</source>
+            <outputDirectory>conf</outputDirectory>
+        </file>
+        <!-- add bundle-deploy directory -->
+        <file>
+            <source>bundle-deploy/about-this-directory.txt</source>
+            <outputDirectory>bundle-deploy</outputDirectory>
+        </file>
+        <!-- add bundle-dev directory -->
+        <file>
+            <source>bundle-dev/about-this-directory.txt</source>
+            <outputDirectory>bundle-dev</outputDirectory>
+        </file>
+    </files>
+
+    <fileSets>
+        <!-- copy start scripts to / -->
+        <fileSet>
+            <directory>script</directory>
+            <fileMode>0555</fileMode>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>dmx-linux.sh</include>
+                <include>dmx-mac.command</include>
+                <include>dmx-windows.bat</include>
+            </includes>
+        </fileSet>
+        <!-- copy COPYRIGHT and LICENSE to / -->
+        <fileSet>
+            <directory>../..</directory>
+            <fileMode>0444</fileMode>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>COPYRIGHT.txt</include>
+                <include>LICENSE.txt</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

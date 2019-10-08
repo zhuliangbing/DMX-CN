@@ -1,0 +1,79 @@
+// Part of DMX 5.0-beta-3
+// Runs ALWAYS
+
+{
+  "topic_types": [
+    {
+      "value":       "组织角色",
+      "uri":         "dmx.contacts.organizational_role",
+      "dataTypeUri": "dmx.core.text"
+    }
+  ],
+  "assoc_types": [
+    {
+      "value":       "组织有关人员",
+      "uri":         "dmx.contacts.organization_involvement",
+      "dataTypeUri": "dmx.core.composite",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.contacts.organizational_role",
+          "childCardinalityUri": "dmx.core.one",
+          "viewConfigTopics": [
+            {
+              "typeUri": "dmx.webclient.view_config",
+              "children": {
+                "dmx.webclient.widget": "ref_uri:dmx.webclient.select",
+                "dmx.webclient.clearable": true,
+                "dmx.webclient.customizable": true
+              }
+            }
+          ]
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.color": "hsl(70, 60%, 53%)",
+            "dmx.webclient.color#dmx.webclient.background_color": "hsl(70, 80%, 96%)"
+          }
+        }
+      ]
+    }
+  ],
+  "topics": [
+    // Organizational Roles
+    {
+      "value":   "执行董事",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "创始人",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "主席",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "合伙人",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "合作伙伴",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "雇员",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "成员",
+      "typeUri": "dmx.contacts.organizational_role"
+    },
+    {
+      "value":   "同事",
+      "typeUri": "dmx.contacts.organizational_role"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+    "topic_types": [
+        // Date
+        {
+            "value":       "月",
+            "uri":         "dmx.datetime.month",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "日",
+            "uri":         "dmx.datetime.day",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "年",
+            "uri":         "dmx.datetime.year",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "日期",
+            "uri":         "dmx.datetime.date",
+            "dataTypeUri": "dmx.core.value",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.datetime.month",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                },
+                {
+                    "childTypeUri":        "dmx.datetime.day",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                },
+                {
+                    "childTypeUri":        "dmx.datetime.year",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                }
+            ]
+        },
+        // Time
+        {
+            "value":       "小时",
+            "uri":         "dmx.datetime.hour",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "分钟",
+            "uri":         "dmx.datetime.minute",
+            "dataTypeUri": "dmx.core.number"
+        },
+        {
+            "value":       "时间",
+            "uri":         "dmx.datetime.time",
+            "dataTypeUri": "dmx.core.value",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.datetime.hour",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                },
+                {
+                    "childTypeUri":        "dmx.datetime.minute",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                }
+            ]
+        },
+        // Date/Time
+        {
+            "value":       "日期/时间",
+            "uri":         "dmx.datetime",
+            "dataTypeUri": "dmx.core.value",
+            "compDefs": [
+                {
+                    "childTypeUri":        "dmx.datetime.date",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                },
+                {
+                    "childTypeUri":        "dmx.datetime.time",
+                    "childCardinalityUri": "dmx.core.one",
+                    "includeInLabel":      true
+                }
+            ]
+        }
+    ],
+    "assoc_types": [
+        {
+            "value":       "从",
+            "uri":         "dmx.datetime.from",
+            "dataTypeUri": "dmx.core.text"
+        },
+        {
+            "value":       "到",
+            "uri":         "dmx.datetime.to",
+            "dataTypeUri": "dmx.core.text"
+        }
+    ]
+}
